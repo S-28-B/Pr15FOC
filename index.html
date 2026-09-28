@@ -1,786 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>InternMatch - Internship Discovery Platform</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InternMatch - Review 2 Demo</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<!-- ================= NAVBAR ================= -->
-
-<header class="navbar">
-
-    <div class="logo">
-        InternMatch
-    </div>
-
-    <nav id="navbar">
-
-        <button onclick="showPage('home')">
-            Home
-        </button>
-
-        <button
-            id="studentNav"
-            onclick="showPage('dashboard')"
-            style="display:none;">
-            Student Dashboard
-        </button>
-
-        <button
-            id="companyNav"
-            onclick="showPage('companyDashboard')"
-            style="display:none;">
-            Company Dashboard
-        </button>
-
-        <button
-            id="internshipNav"
-            onclick="showPage('internships')"
-            style="display:none;">
-            Internships
-        </button>
-
-        <button
-            id="applicationNav"
-            onclick="showPage('applications')"
-            style="display:none;">
-            My Applications
-        </button>
-
-        <button
-            id="logoutButton"
-            onclick="logout()"
-            style="display:none;">
-            Logout
-        </button>
-
-    </nav>
-
+<header>
+  <div class="brand">InternMatch</div>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+    <button onclick="showPage('internships')">Internships</button>
+    <button onclick="showPage('applications')">My Applications</button>
+  </nav>
 </header>
 
-
-<!-- ================= MAIN ================= -->
-
 <main>
-
-
-<!-- ================= LOGIN PAGE ================= -->
-
-<section id="login" class="page active">
-
-    <div class="login-container">
-
-        <div class="login-header">
-
-            <h1>InternMatch</h1>
-
-            <p>
-                Internship Discovery & Smart Matching Platform
-            </p>
-
-        </div>
-
-
-        <!-- LOGIN TABS -->
-
-        <div class="login-tabs">
-
-            <button
-                id="studentTab"
-                class="login-tab active"
-                onclick="switchLogin('student')">
-
-                👨‍🎓 Student Login
-
-            </button>
-
-
-            <button
-                id="companyTab"
-                class="login-tab"
-                onclick="switchLogin('company')">
-
-                🏢 Company Login
-
-            </button>
-
-        </div>
-
-
-        <!-- STUDENT LOGIN -->
-
-        <div id="studentLogin">
-
-            <h2>Student Login</h2>
-
-            <p class="login-description">
-                Login to discover internships based on your skills.
-            </p>
-
-
-            <label>
-                Email
-            </label>
-
-            <input
-                type="email"
-                id="studentEmail"
-                placeholder="student@example.com">
-
-
-            <label>
-                Password
-            </label>
-
-            <input
-                type="password"
-                id="studentPassword"
-                placeholder="Enter password">
-
-
-            <button
-                class="primary-button full-width"
-                onclick="loginStudent()">
-
-                Login as Student
-
-            </button>
-
-
-            <p class="demo-text">
-                Demo: Any email and password will work.
-            </p>
-
-        </div>
-
-
-        <!-- COMPANY LOGIN -->
-
-        <div
-            id="companyLogin"
-            style="display:none;">
-
-            <h2>Company Login</h2>
-
-            <p class="login-description">
-                Login to post and manage internship opportunities.
-            </p>
-
-
-            <label>
-                Company Email
-            </label>
-
-            <input
-                type="email"
-                id="companyEmail"
-                placeholder="company@example.com">
-
-
-            <label>
-                Password
-            </label>
-
-            <input
-                type="password"
-                id="companyPassword"
-                placeholder="Enter password">
-
-
-            <button
-                class="primary-button full-width"
-                onclick="loginCompany()">
-
-                Login as Company
-
-            </button>
-
-
-            <p class="demo-text">
-                Demo: Any email and password will work.
-            </p>
-
-        </div>
-
+<section id="home" class="page active">
+  <div class="hero">
+    <div>
+      <small>Student Skill & Internship Finder</small>
+      <h1>One Platform. Right Skills. Right Internship.</h1>
+      <p>Find internships based on skills, interests and career goals.</p>
+      <button class="primary" onclick="showPage('dashboard')">Open Student Dashboard</button>
     </div>
-
+    <div class="flow">
+      <b>Profile</b><span>→</span><b>Match</b><span>→</span><b>Apply</b>
+    </div>
+  </div>
+  <div class="cards">
+    <article><h3>👤 Student Profile</h3><p>Education, skills, interests and projects.</p></article>
+    <article><h3>🔎 Internship List</h3><p>View opportunities and required skills.</p></article>
+    <article><h3>🎯 Basic Matching</h3><p>Compare student skills with requirements.</p></article>
+    <article><h3>📋 Application Tracking</h3><p>Apply and view basic status.</p></article>
+  </div>
 </section>
-
-
-
-<!-- ================= HOME PAGE ================= -->
-
-<section id="home" class="page">
-
-    <div class="hero">
-
-        <div class="hero-content">
-
-            <span class="badge">
-                Student Skill & Internship Finder
-            </span>
-
-            <h1>
-                One Platform.<br>
-                Right Skills.<br>
-                Right Internship.
-            </h1>
-
-            <p>
-                Find internship opportunities based on your
-                skills, interests and career goals.
-            </p>
-
-            <button
-                class="primary-button"
-                onclick="openDashboard()">
-
-                Get Started
-
-            </button>
-
-        </div>
-
-
-        <div class="flow-card">
-
-            <h3>
-                Internship Discovery Flow
-            </h3>
-
-            <div class="flow">
-
-                <span>Profile</span>
-
-                <b>→</b>
-
-                <span>Internship</span>
-
-                <b>→</b>
-
-                <span>Match</span>
-
-                <b>→</b>
-
-                <span>Apply</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="feature-grid">
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                👤
-            </div>
-
-            <h3>
-                Student Profile
-            </h3>
-
-            <p>
-                Add education, skills, interests,
-                career goals and projects.
-            </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                🔎
-            </div>
-
-            <h3>
-                Internship Search
-            </h3>
-
-            <p>
-                Browse available internship opportunities.
-            </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                🎯
-            </div>
-
-            <h3>
-                Skill Matching
-            </h3>
-
-            <p>
-                Compare student skills with internship
-                requirements.
-            </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                📋
-            </div>
-
-            <h3>
-                Application Tracking
-            </h3>
-
-            <p>
-                Apply for internships and track applications.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= STUDENT DASHBOARD ================= -->
 
 <section id="dashboard" class="page">
-
-    <div class="page-header">
-
-        <h2>
-            Student Dashboard
-        </h2>
-
-        <p>
-            Manage your profile and find suitable internships.
-        </p>
-
+  <h2>Student Dashboard</h2>
+  <div class="grid">
+    <div class="panel">
+      <h3>Student Profile</h3>
+      <label>Name</label><input id="name" value="Student Demo">
+      <label>Education</label><input id="education" value="B.Tech Computer Engineering">
+      <label>Career Goal</label><input id="goal" value="Web Development">
+      <label>Skills <small>(comma separated)</small></label>
+      <input id="skills" value="HTML, CSS, JavaScript">
+      <label>Interests</label><input id="interests" value="Web Development, Software">
+      <label>Projects</label><textarea id="projects">Student Skill & Internship Finder</textarea>
+      <button class="primary" onclick="saveProfile()">Save Profile</button>
+      <span id="saved"></span>
     </div>
-
-
-    <div class="dashboard-grid">
-
-
-        <!-- PROFILE -->
-
-        <div class="panel">
-
-            <h3>
-                Student Profile
-            </h3>
-
-
-            <label>
-                Name
-            </label>
-
-            <input
-                type="text"
-                id="studentName"
-                value="Student Demo">
-
-
-            <label>
-                Education
-            </label>
-
-            <input
-                type="text"
-                id="education"
-                value="B.Tech Computer Engineering">
-
-
-            <label>
-                Career Goal
-            </label>
-
-            <input
-                type="text"
-                id="careerGoal"
-                value="Web Development">
-
-
-            <label>
-                Skills
-                <span class="small-text">
-                    (comma separated)
-                </span>
-            </label>
-
-            <input
-                type="text"
-                id="skills"
-                value="HTML, CSS, JavaScript">
-
-
-            <label>
-                Interests
-            </label>
-
-            <input
-                type="text"
-                id="interests"
-                value="Web Development, Software">
-
-
-            <label>
-                Projects
-            </label>
-
-            <textarea
-                id="projects">Student Skill & Internship Finder</textarea>
-
-
-            <button
-                class="primary-button"
-                onclick="saveProfile()">
-
-                Save Profile
-
-            </button>
-
-
-            <span
-                id="saveMessage"
-                class="success-message">
-            </span>
-
-        </div>
-
-
-
-        <!-- QUICK ACTIONS -->
-
-        <div class="panel">
-
-            <h3>
-                Quick Actions
-            </h3>
-
-
-            <button
-                class="action-button"
-                onclick="showPage('internships')">
-
-                🔎 Browse Internships
-
-            </button>
-
-
-            <button
-                class="action-button"
-                onclick="showPage('internships')">
-
-                🎯 Find Skill Matches
-
-            </button>
-
-
-            <button
-                class="action-button"
-                onclick="showPage('applications')">
-
-                📋 My Applications
-
-            </button>
-
-
-            <div class="stats">
-
-                <div class="stat-box">
-
-                    <strong id="skillCount">
-                        3
-                    </strong>
-
-                    <span>
-                        Skills
-                    </span>
-
-                </div>
-
-
-                <div class="stat-box">
-
-                    <strong id="applicationCount">
-                        0
-                    </strong>
-
-                    <span>
-                        Applications
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="panel">
+      <h3>Quick Actions</h3>
+      <button class="action" onclick="showPage('internships')">🔎 Browse Internships</button>
+      <button class="action" onclick="showPage('internships')">🎯 Find Skill Matches</button>
+      <button class="action" onclick="showPage('applications')">📋 View My Applications</button>
+      <div class="stats"><div><b id="skillCount">3</b><small>Skills</small></div><div><b id="appCount">0</b><small>Applications</small></div></div>
     </div>
-
+  </div>
 </section>
-
-
-
-<!-- ================= INTERNSHIP PAGE ================= -->
 
 <section id="internships" class="page">
-
-    <div class="page-header">
-
-        <h2>
-            Internship Opportunities
-        </h2>
-
-        <p>
-            Search internships and check your skill match.
-        </p>
-
-    </div>
-
-
-    <div class="toolbar">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search internship or skill..."
-            oninput="renderInternships()">
-
-
-        <select
-            id="filterSelect"
-            onchange="renderInternships()">
-
-            <option value="all">
-                All Internships
-            </option>
-
-            <option value="matched">
-                My Skill Matches
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div
-        id="internshipList"
-        class="internship-grid">
-    </div>
-
+  <h2>Internship Opportunities</h2>
+  <div class="toolbar">
+    <input id="search" placeholder="Search internship or skill..." oninput="render()">
+    <select id="filter" onchange="render()"><option value="all">All</option><option value="matched">My Skill Matches</option></select>
+  </div>
+  <div id="list" class="internships"></div>
 </section>
-
-
-
-<!-- ================= APPLICATIONS ================= -->
 
 <section id="applications" class="page">
-
-    <div class="page-header">
-
-        <h2>
-            My Applications
-        </h2>
-
-        <p>
-            Track your internship applications.
-        </p>
-
-    </div>
-
-
-    <div id="applicationList">
-    </div>
-
+  <h2>My Applications</h2>
+  <div id="apps"></div>
 </section>
-
-
-
-<!-- ================= COMPANY DASHBOARD ================= -->
-
-<section id="companyDashboard" class="page">
-
-    <div class="page-header">
-
-        <h2>
-            Company Dashboard
-        </h2>
-
-        <p>
-            Post internship opportunities for students.
-        </p>
-
-    </div>
-
-
-    <div class="dashboard-grid">
-
-
-        <!-- POST INTERNSHIP -->
-
-        <div class="panel">
-
-            <h3>
-                Post Internship
-            </h3>
-
-
-            <label>
-                Internship Title
-            </label>
-
-            <input
-                type="text"
-                id="jobTitle"
-                placeholder="Web Development Intern">
-
-
-            <label>
-                Company Name
-            </label>
-
-            <input
-                type="text"
-                id="companyName"
-                value="Demo Company">
-
-
-            <label>
-                Required Skills
-            </label>
-
-            <input
-                type="text"
-                id="jobSkills"
-                placeholder="HTML, CSS, JavaScript">
-
-
-            <label>
-                Duration
-            </label>
-
-            <input
-                type="text"
-                id="jobDuration"
-                value="3 Months">
-
-
-            <label>
-                Location
-            </label>
-
-            <input
-                type="text"
-                id="jobLocation"
-                value="Remote">
-
-
-            <button
-                class="primary-button"
-                onclick="postInternship()">
-
-                Post Internship
-
-            </button>
-
-        </div>
-
-
-
-        <!-- COMPANY SUMMARY -->
-
-        <div class="panel">
-
-            <h3>
-                Company Summary
-            </h3>
-
-
-            <div class="stats">
-
-                <div class="stat-box">
-
-                    <strong id="jobCount">
-                        4
-                    </strong>
-
-                    <span>
-                        Internships
-                    </span>
-
-                </div>
-
-
-                <div class="stat-box">
-
-                    <strong id="companyApplicationCount">
-                        0
-                    </strong>
-
-                    <span>
-                        Applications
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                Company can post internship opportunities
-                and specify required skills.
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <h3 class="section-title">
-        Posted Internships
-    </h3>
-
-
-    <div id="companyJobs">
-    </div>
-
-</section>
-
 </main>
 
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <p>
-        Internship Discovery & Smart Matching Platform
-        | Review 2 Prototype
-    </p>
-
-</footer>
-
-
+<footer>Review 2 Prototype • Internship Discovery & Smart Matching Platform</footer>
 <script src="script.js"></script>
-
 </body>
-
 </html>
